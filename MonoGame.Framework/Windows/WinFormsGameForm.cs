@@ -45,7 +45,7 @@ namespace Microsoft.Xna.Framework.Windows
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            bool arrowKey = true;
+            bool nonPrintableKey = true;
             KeyPressEventArgs ka = null;
 
             switch (keyData)
@@ -62,12 +62,22 @@ namespace Microsoft.Xna.Framework.Windows
                 case Keys.Down:
                     ka = new KeyPressEventArgs((char) 4);
                     break;
+
+                case Keys.Home:
+                    ka = new KeyPressEventArgs((char)5);
+                    break;
+                case Keys.End:
+                    ka = new KeyPressEventArgs((char)6);
+                    break;
+                case Keys.Delete:
+                    ka = new KeyPressEventArgs((char)0x10);
+                    break;
                 default:
-                    arrowKey = false;
+                    nonPrintableKey = false;
                     break;
             }
 
-            if (arrowKey) {
+            if (nonPrintableKey) {
                 OnKeyPress(ka);
                 return true;
             }
