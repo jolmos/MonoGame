@@ -43,6 +43,38 @@ namespace Microsoft.Xna.Framework.Windows
             _window = window;
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            bool arrowKey = true;
+            KeyPressEventArgs ka = null;
+
+            switch (keyData)
+            {
+                case Keys.Left:
+                    ka = new KeyPressEventArgs((char) 1);
+                    break;
+                case Keys.Up:
+                    ka = new KeyPressEventArgs((char) 2);
+                    break;
+                case Keys.Right:
+                    ka = new KeyPressEventArgs((char) 3);
+                    break;
+                case Keys.Down:
+                    ka = new KeyPressEventArgs((char) 4);
+                    break;
+                default:
+                    arrowKey = false;
+                    break;
+            }
+
+            if (arrowKey) {
+                OnKeyPress(ka);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
         protected override void WndProc(ref Message m)
         {
