@@ -188,8 +188,8 @@ namespace MonoGame.Framework
             _form.MouseLeave += OnMouseLeave;            
 
             // Use RawInput to capture key events.
-            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericKeyboard, DeviceFlags.None);
-            Device.KeyboardInput += OnRawKeyEvent;
+            //Device.RegisterDevice(UsagePage.Generic, UsageId.GenericKeyboard, DeviceFlags.None);
+            //Device.KeyboardInput += OnRawKeyEvent;
 
             _form.Activated += OnActivated;
             _form.Deactivate += OnDeactivate;
