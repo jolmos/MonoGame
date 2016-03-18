@@ -32,6 +32,7 @@ namespace Microsoft.Xna.Framework.Windows
         public const int WM_POINTERDOWN = 0x0246;
         public const int WM_POINTERUPDATE = 0x0245;
         public const int WM_KEYDOWN = 0x0100;
+        public const int WM_ACTIVATEAPP = 0x1C;
         public const int WM_TABLET_QUERYSYSTEMGESTURESTA = (0x02C0 + 12);
 
         public const int WM_SYSCOMMAND = 0x0112;
@@ -124,6 +125,14 @@ namespace Microsoft.Xna.Framework.Windows
                             goto case 0x5B;
                     }
                     break;
+
+                case WM_ACTIVATEAPP:
+                    bool active = m.WParam != IntPtr.Zero;
+
+                    MonoGame.Framework.WinFormsGameWindow w = (MonoGame.Framework.WinFormsGameWindow)this._window;
+                    w.Game.Platform.IsActive= active;
+                    break;
+                    
 #endif
                 case WM_SYSCOMMAND:
 

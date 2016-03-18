@@ -79,7 +79,7 @@ namespace MonoGame.Framework
 
         #region Internal Properties
 
-        internal Game Game { get; private set; }
+        public Game Game { get; private set; }
 
         #endregion
 
